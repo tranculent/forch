@@ -1,6 +1,12 @@
+import { IsString, IsNumber } from 'class-validator';
+
 export class CreateWorkoutDto {
-    name: string;
-    duration: number;
-    type: 'strength' | 'cardio' | 'mobility';
-  }
-  
+  @IsString()
+  name: string;
+
+  @IsNumber()
+  duration: number;
+
+  @IsString()
+  type: string;
+}

@@ -1,18 +1,18 @@
 
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Workout, WorkoutDocument } from './workout.schema';
+import { Model } from 'mongoose';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
 
 @Injectable()
 export class WorkoutService {
-  private workouts: CreateWorkoutDto[] = [];
+  constructor(
+    @InjectModel(Workout.name) private workoutModel: Model<WorkoutDocument>,
+  ) {}
 
-  create(workoutDto: CreateWorkoutDto) {
-    const newWorkout = { id: Date.now(), ...workoutDto };
-    this.workouts.push(newWorkout);
-    return newWorkout;
-  }
-
-  findAll() {
-    return this.workouts;
+  async create(createWorkoutDto: CreateWorkoutDto): Promise<Workout> {
+    const newWorkout = new this.workoutModel(createWorkoutDto);
+    return newWorkout.save();
   }
 }

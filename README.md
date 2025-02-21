@@ -9,7 +9,15 @@ $ npm install
 ```
 
 To establish connection to the database, you have to have docker running. Make sure it's installed and running by typing `docker -v`.
-Run `docker run -d --name mongodb-container -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=####### -e MONGO_INITDB_ROOT_PASSWORD=####### mongo` 
+Run 
+```bash
+docker run -d --name mongodb-container -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=####### -e MONGO_INITDB_ROOT_PASSWORD=####### mongo
+``` 
+
+To open the MongoDB shell inside your running container:
+```bash
+docker exec -it mongodb-container mongosh -u ####### -p ####### --authenticationDatabase admin
+```
 
 ## Compile and run the project
 

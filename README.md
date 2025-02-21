@@ -6,6 +6,10 @@
 ```bash
 $ npm install
 ```
+To use the mongo db shell:
+```bash
+docker exec -it mongodb-container mongosh
+```
 
 To establish connection to the database, you have to have docker running. Make sure it's installed and running by typing `docker -v`.
 Run 

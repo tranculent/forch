@@ -24,6 +24,14 @@ docker exec -it mongodb-container mongosh -u ####### -p ####### --authentication
 ```
 
 # Start MongoDB with Docker Compose
+To use mongo db locally, make sure you create an admin user.
+
+db.createUser({
+  user: "CHANGEME",
+  pwd: "CHANGEME",
+  roles: [{ role: "root", db: "admin" }]
+})
+
 Run this command in your terminal:
 ```bash
 docker compose up -d

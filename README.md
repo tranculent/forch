@@ -3,7 +3,6 @@
 
 
 ## Project setup
-
 ```bash
 $ npm install
 ```
@@ -13,6 +12,7 @@ Run
 ```bash
 docker run -d --name mongodb-container -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=####### -e MONGO_INITDB_ROOT_PASSWORD=####### mongo
 ``` 
+**Note:** you will need to request a .env file with the username and password for the database to establish connection.
 
 To open the MongoDB shell inside your running container:
 ```bash
@@ -20,6 +20,22 @@ docker exec -it mongodb-container mongosh -u ####### -p ####### --authentication
 ```
 
 ## Compile and run the project
+
+# Start MongoDB with Docker Compose
+Run this command in your terminal:
+```bash
+docker compose up -d
+```
+
+This will:
+* Pull the latest MongoDB image
+* Create and start the MongoDB container
+* Store data in a persistent Docker volume (mongo_data)
+
+You can verify it's running with:
+```bash
+docker ps
+```
 
 ```bash
 # development

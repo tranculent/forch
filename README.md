@@ -19,8 +19,6 @@ To open the MongoDB shell inside your running container:
 docker exec -it mongodb-container mongosh -u ####### -p ####### --authenticationDatabase admin
 ```
 
-## Compile and run the project
-
 # Start MongoDB with Docker Compose
 Run this command in your terminal:
 ```bash
@@ -47,6 +45,22 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+# If you want to start from scratch (no data in MongoDB)
+Run:
+```bash
+docker compose down -v  # Removes containers + volumes (deletes data)
+docker compose up -d    # Starts fresh MongoDB (empty database)
+```
+If you want to keep your previous dev data
+Just run:
+```bash
+docker compose up -d
+```
+
+Since the mongo_data volume persists, your previous data is still there.
+The -v flag deletes the mongo_data volume, wiping out all stored data.
+The next docker compose up -d will create a brand-new MongoDB instance.
 
 ## Run tests
 

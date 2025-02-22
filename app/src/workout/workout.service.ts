@@ -11,6 +11,10 @@ export class WorkoutService {
     @InjectModel(Workout.name) private workoutModel: Model<WorkoutDocument>,
   ) {}
 
+  async findAll(): Promise<Workout[]> {
+    return this.workoutModel.find().exec();
+  }
+
   async create(createWorkoutDto: CreateWorkoutDto): Promise<Workout> {
     const newWorkout = new this.workoutModel(createWorkoutDto);
     return newWorkout.save();

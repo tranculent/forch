@@ -1,10 +1,11 @@
 import "../styles/globals.scss";
+import styles from "../styles/Card.module.scss";
 import Navbar from "../components/Navbar";
 import { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<div className="bg-gray-900 min-h-screen text-white">
+		<div className={styles.card}>
 			<Navbar />
 			<Component {...pageProps} />
 		</div>

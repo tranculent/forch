@@ -24,12 +24,14 @@ async function bootstrap() {
     next();
   });
 
+  app.enableCors(); // Allows frontend to communicate with backend
+
   // Swagger Configuration
   const config = new DocumentBuilder()
   .setTitle('Workout API')
   .setDescription('API documentation for managing workouts')
   .setVersion('1.0')
-  .addTag('workouts') // Adds a tag for workout routes
+  .addTag('workouts')
   .build();
 
   const document: OpenAPIObject = SwaggerModule.createDocument(app, config);

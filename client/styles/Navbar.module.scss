@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    white-space: nowrap; /* Prevent breaking */
+  }
+  
+  @media (max-width: 500px) {
+    .navbar {
+      flex-direction: column; /* Stack links vertically */
+      align-items: flex-start;
+    }
+  }
+  

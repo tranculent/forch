@@ -37,31 +37,31 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-    <h1 className={styles.title}>Workout Journal</h1>
-    <p className={styles.date}>{dateTime ?? "Loading..."}</p>
+      <h1 className={styles.title}>Workout Journal</h1>
+      <p className={styles.date}>{dateTime ?? "Loading..."}</p>
 
-    <div className={styles.workouts}>
-      <h2>Recent Workouts</h2>
-      {loading ? (
-        <p>Loading workouts...</p>
-      ) : workouts.length === 0 ? (
-        <p>No workouts logged yet.</p>
-      ) : (
-        <ul className={styles.workoutList}>
-          {workouts.map((workout) => (
-            <li key={workout._id} className={styles.workoutItem}>
-              <h3>{workout.name}</h3>
-              <p>⏳ Duration: {workout.duration} mins</p>
-              {workout.type && <p>💪 Type: {workout.type}</p>}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className={styles.workouts}>
+        <h2>Recent Workouts</h2>
+        {loading ? (
+          <p>Loading workouts...</p>
+        ) : workouts.length === 0 ? (
+          <p>No workouts logged yet.</p>
+        ) : (
+          <ul className={styles.workoutList}>
+            {workouts.map((workout) => (
+              <li key={workout._id} className={styles.workoutItem}>
+                <h3>{workout.name}</h3>
+                <p>⏳ Duration: {workout.duration} mins</p>
+                {workout.type && <p>💪 Type: {workout.type}</p>}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <Link href="/workouts/new">
+        <button className={styles.button}>Log a Workout</button>
+      </Link>
     </div>
-
-    <Link href="/workouts/new">
-      <button className={styles.button}>Log a Workout</button>
-    </Link>
-  </div>
   );
 }

@@ -66,6 +66,8 @@ export default function WorkoutLogging() {
 
 				<button className={styles.button} type="submit">Submit Workout</button>
 			</form>
+			
+			{message && <p className={styles.successMessage}>{message}</p>}
 		</div>
 
 	);

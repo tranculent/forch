@@ -7,7 +7,10 @@ interface Workout {
   _id: string;
   name: string;
   duration: number;
+  distance: number;
+  distanceUnit: string;
   type: string;
+  date: Date;
 }
 
 export default function Home() {
@@ -51,13 +54,18 @@ export default function Home() {
             {workouts.map((workout) => (
               <li key={workout._id} className={styles.workoutItem}>
                 <h3>{workout.name}</h3>
+                <p>📅 Date: {new Date(workout.date).toLocaleDateString()}</p>
                 <p>⏳ Duration: {workout.duration} mins</p>
                 {workout.type && <p>💪 Type: {workout.type}</p>}
+                {workout.distance > 0 && (
+                  <p>📏 Distance: {workout.distance} {workout.distanceUnit || "km"}</p>
+                )}
               </li>
             ))}
           </ul>
         )}
       </div>
+
 
       <Link href="/workouts/new">
         <button className={styles.button}>Log a Workout</button>

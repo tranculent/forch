@@ -17,12 +17,23 @@ export class WorkoutService {
   }
 
   async create(createWorkoutDto: CreateWorkoutDto): Promise<Workout> {
-    if (!createWorkoutDto.name || createWorkoutDto.duration <= 0) {
+    if (!createWorkoutDto.name) {
+      console.log('name')
       throw new BadRequestException('Invalid workout name.');
     }
 
     if (createWorkoutDto.duration <= 0) {
-      throw new BadRequestException('Invalid workout duration.');
+      console.log('duration')
+      throw new BadRequestException('Duration must be at least 1 minute.');
+    }
+
+    if (createWorkoutDto.distance && createWorkoutDto.distance < 1) {
+      console.log('distance')
+      throw new BadRequestException('Distance must be at least 1 meter.');
+    }
+
+    if (!createWorkoutDto.distanceUnit) {
+      createWorkoutDto.distanceUnit = 'km'; // Default unit if not provided
     }
 
     const newWorkout = new this.workoutModel(createWorkoutDto);

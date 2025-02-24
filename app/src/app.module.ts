@@ -7,6 +7,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { WorkoutModule } from './workout/workout.module';
 import { ConfigModule } from '@nestjs/config';
 import * as dotenv from 'dotenv';
+import { ProgressModule } from './progress-dashboard/progress.module';
+import { ProgressController } from './progress-dashboard/progress.controller';
+import { ProgressService } from './progress-dashboard/progress.service';
 
 dotenv.config();
 
@@ -20,9 +23,10 @@ if (!MONGO_URI) {
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(MONGO_URI),
-    WorkoutModule
+    WorkoutModule,
+    ProgressModule
   ],
-  controllers: [AppController, WorkoutController],
-  providers: [AppService, WorkoutService],
+  controllers: [AppController, WorkoutController, ProgressController],
+  providers: [AppService, WorkoutService, ProgressService],
 })
-export class AppModule {}
+export class AppModule { }
